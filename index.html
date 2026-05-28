@@ -1,0 +1,2576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zap&amp;flow – Electrical &amp; Air Conditioning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="./assets/img/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#0F1E36",
+              cyan: "#4DE2FF",
+              ocean: "#1D73A8",
+              ice: "#E2FAFF",
+              offwhite: "#F4F9FC",
+            },
+            fontFamily: {
+              heading: ["Montserrat", "sans-serif"],
+              body: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #0f1e36;
+        color: #e2faff;
+        overflow-x: hidden;
+      }
+
+      /* Scroll-reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      /* Neon glow CTA */
+      .btn-cyan {
+        background: #4de2ff;
+        color: #0f1e36;
+        font-weight: 700;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .btn-cyan:hover {
+        transform: scale(1.05);
+        box-shadow:
+          0 0 20px #4de2ff,
+          0 0 40px rgba(77, 226, 255, 0.4);
+      }
+      .btn-outline {
+        border: 2px solid #1d73a8;
+        color: #e2faff;
+        background: transparent;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease;
+      }
+      .btn-outline:hover {
+        transform: scale(1.05);
+        background: rgba(29, 115, 168, 0.2);
+      }
+
+      /* Service card hover */
+      .service-card {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 32px rgba(77, 226, 255, 0.15);
+        border-color: #4de2ff;
+      }
+
+      /* Nav scroll */
+      #navbar {
+        transition:
+          background 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      #navbar.scrolled {
+        background: rgba(15, 30, 54, 0.97);
+        box-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      /* SVG wave animation */
+      @keyframes flowWave {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .wave-animate {
+        animation: flowWave 8s linear infinite;
+      }
+
+      /* Bolt pulse */
+      @keyframes boltPulse {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 8px #4de2ff);
+        }
+        50% {
+          filter: drop-shadow(0 0 24px #4de2ff)
+            drop-shadow(0 0 48px rgba(77, 226, 255, 0.5));
+        }
+      }
+      .bolt-pulse {
+        animation: boltPulse 2.5s ease-in-out infinite;
+      }
+
+      /* Testimonial carousel */
+      .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      /* Map pin bounce */
+      @keyframes pinBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+      .pin-bounce {
+        animation: pinBounce 2s ease-in-out infinite;
+      }
+
+      /* Hamburger */
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #e2faff;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* Counter */
+      @keyframes countUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .stat-num {
+        animation: countUp 0.8s ease forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ═══════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════ -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 py-1">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <a
+          href="#"
+          class="flex items-cente cursor-pointer"
+          aria-label="Zap&flow home"
+        >
+          <img
+            class="h-8 w-auto"
+            src="./assets/img/logo.png"
+            alt="zap and flow logo"
+          />
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav
+          class="hidden md:flex items-center gap-8"
+          aria-label="Main navigation"
+        >
+          <a
+            href="#services"
+            class="text-ice/80 hover:text-cyan transition-colors duration-200 font-medium text-sm cursor-pointer"
+            >Services</a
+          >
+          <a
+            href="#why-us"
+            class="text-ice/80 hover:text-cyan transition-colors duration-200 font-medium text-sm cursor-pointer"
+            >Why Us</a
+          >
+          <a
+            href="#areas"
+            class="text-ice/80 hover:text-cyan transition-colors duration-200 font-medium text-sm cursor-pointer"
+            >Areas</a
+          >
+          <a
+            href="#contact"
+            class="text-ice/80 hover:text-cyan transition-colors duration-200 font-medium text-sm cursor-pointer"
+            >Contact</a
+          >
+        </nav>
+
+        <!-- Desktop CTA -->
+        <a
+          href="#quote"
+          class="hidden md:inline-flex btn-cyan rounded-xl px-5 py-2.5 text-sm cursor-pointer"
+        >
+          Get a Free Quote
+        </a>
+
+        <!-- Hamburger -->
+        <button
+          id="hamburger"
+          class="hamburger md:hidden flex flex-col gap-1.5 cursor-pointer"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-navy/98 border-t border-ocean/30 px-6 py-6 flex flex-col gap-5"
+      >
+        <a
+          href="#services"
+          class="text-ice/80 hover:text-cyan transition-colors font-medium cursor-pointer mobile-link"
+          >Services</a
+        >
+        <a
+          href="#why-us"
+          class="text-ice/80 hover:text-cyan transition-colors font-medium cursor-pointer mobile-link"
+          >Why Us</a
+        >
+        <a
+          href="#areas"
+          class="text-ice/80 hover:text-cyan transition-colors font-medium cursor-pointer mobile-link"
+          >Areas</a
+        >
+        <a
+          href="#contact"
+          class="text-ice/80 hover:text-cyan transition-colors font-medium cursor-pointer mobile-link"
+          >Contact</a
+        >
+        <a
+          href="#quote"
+          class="btn-cyan rounded-xl px-5 py-3 text-center text-sm cursor-pointer"
+          >Get a Free Quote</a
+        >
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════ -->
+    <section
+      id="hero"
+      class="relative bg-navy min-h-screen flex items-center pt-20 overflow-hidden"
+    >
+      <!-- Background grid pattern -->
+      <div
+        class="absolute inset-0 opacity-5"
+        style="
+          background-image:
+            linear-gradient(#4de2ff 1px, transparent 1px),
+            linear-gradient(90deg, #4de2ff 1px, transparent 1px);
+          background-size: 48px 48px;
+        "
+      ></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+        >
+          <!-- Text Column -->
+          <div class="reveal">
+            <span
+              class="inline-flex items-center gap-2 bg-cyan/10 border border-cyan/30 text-cyan text-xs font-semibold rounded-full px-4 py-1.5 mb-6 tracking-wide uppercase"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <circle cx="6" cy="6" r="6" />
+              </svg>
+              Licensed · Certified · Insured
+            </span>
+
+            <h1
+              class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-ice leading-tight mb-6"
+            >
+              Powering Your Comfort with
+              <span class="text-cyan"> Trusted</span> Electrical &amp; Air
+              Conditioning Services
+            </h1>
+
+            <p class="text-ice/70 text-lg leading-relaxed mb-10 max-w-xl">
+              Making power and comfort simple for everyone. Reliable energy,
+              perfect climate, and high-standard expertise for your home or
+              business.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="#quote"
+                class="btn-cyan rounded-xl px-8 py-4 text-base text-center cursor-pointer"
+              >
+                Get a Free Quote
+              </a>
+              <a
+                href="tel:+61400000000"
+                class="btn-outline rounded-xl px-8 py-4 text-base text-center cursor-pointer"
+              >
+                Call Now
+              </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="mt-12 flex gap-8">
+              <div>
+                <p
+                  class="font-heading font-extrabold text-3xl text-cyan stat-num"
+                >
+                  500+
+                </p>
+                <p class="text-ice/60 text-sm mt-1">Jobs Completed</p>
+              </div>
+              <div class="w-px bg-ocean/40"></div>
+              <div>
+                <p
+                  class="font-heading font-extrabold text-3xl text-cyan stat-num"
+                >
+                  5★
+                </p>
+                <p class="text-ice/60 text-sm mt-1">Average Rating</p>
+              </div>
+              <div class="w-px bg-ocean/40"></div>
+              <div>
+                <p
+                  class="font-heading font-extrabold text-3xl text-cyan stat-num"
+                >
+                  10+
+                </p>
+                <p class="text-ice/60 text-sm mt-1">Years Experience</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Column -->
+          <div class="reveal flex justify-center lg:justify-end">
+            <div class="relative w-full max-w-md lg:max-w-lg">
+              <!-- Glow backdrop -->
+              <div
+                class="absolute inset-0 bg-cyan/10 rounded-3xl blur-3xl scale-110"
+              ></div>
+
+              <!-- Main illustration card -->
+              <div
+                class="relative bg-navy/60 border border-cyan/20 rounded-3xl p-8 backdrop-blur-sm"
+              >
+                <svg
+                  viewBox="0 0 400 360"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-full"
+                  aria-label="Electrical and air conditioning illustration"
+                  role="img"
+                >
+                  <!-- AC Unit -->
+                  <rect
+                    x="40"
+                    y="40"
+                    width="320"
+                    height="80"
+                    rx="16"
+                    fill="#1D73A8"
+                    opacity="0.6"
+                  />
+                  <rect
+                    x="40"
+                    y="40"
+                    width="320"
+                    height="80"
+                    rx="16"
+                    stroke="#4DE2FF"
+                    stroke-width="1.5"
+                    opacity="0.5"
+                  />
+                  <rect
+                    x="60"
+                    y="58"
+                    width="200"
+                    height="8"
+                    rx="4"
+                    fill="#4DE2FF"
+                    opacity="0.4"
+                  />
+                  <rect
+                    x="60"
+                    y="72"
+                    width="160"
+                    height="6"
+                    rx="3"
+                    fill="#4DE2FF"
+                    opacity="0.25"
+                  />
+                  <circle
+                    cx="340"
+                    cy="80"
+                    r="16"
+                    fill="#0F1E36"
+                    stroke="#4DE2FF"
+                    stroke-width="1.5"
+                  />
+                  <path d="M334 80 L340 74 L346 80 L340 86 Z" fill="#4DE2FF" />
+
+                  <!-- Airflow waves -->
+                  <g class="wave-animate" style="width: 200%">
+                    <path
+                      d="M0 170 Q50 160 100 170 Q150 180 200 170 Q250 160 300 170 Q350 180 400 170 Q450 160 500 170 Q550 180 600 170 Q650 160 700 170 Q750 180 800 170"
+                      stroke="#4DE2FF"
+                      stroke-width="2"
+                      opacity="0.5"
+                      fill="none"
+                    />
+                    <path
+                      d="M0 185 Q50 175 100 185 Q150 195 200 185 Q250 175 300 185 Q350 195 400 185 Q450 175 500 185 Q550 195 600 185 Q650 175 700 185 Q750 195 800 185"
+                      stroke="#4DE2FF"
+                      stroke-width="1.5"
+                      opacity="0.35"
+                      fill="none"
+                    />
+                    <path
+                      d="M0 200 Q50 190 100 200 Q150 210 200 200 Q250 190 300 200 Q350 210 400 200 Q450 190 500 200 Q550 210 600 200 Q650 190 700 200 Q750 210 800 200"
+                      stroke="#1D73A8"
+                      stroke-width="1"
+                      opacity="0.5"
+                      fill="none"
+                    />
+                  </g>
+
+                  <!-- Electric bolt (large, center) -->
+                  <g class="bolt-pulse">
+                    <polygon
+                      points="210,220 180,270 200,270 190,320 220,270 200,270"
+                      fill="#4DE2FF"
+                      opacity="0.9"
+                    />
+                    <polygon
+                      points="210,220 180,270 200,270 190,320 220,270 200,270"
+                      fill="none"
+                      stroke="#E2FAFF"
+                      stroke-width="1"
+                      opacity="0.4"
+                    />
+                  </g>
+
+                  <!-- Circuit lines -->
+                  <path
+                    d="M80 290 L130 290 L130 270 L160 270"
+                    stroke="#1D73A8"
+                    stroke-width="1.5"
+                    opacity="0.6"
+                    stroke-dasharray="4 3"
+                  />
+                  <path
+                    d="M320 290 L270 290 L270 270 L240 270"
+                    stroke="#1D73A8"
+                    stroke-width="1.5"
+                    opacity="0.6"
+                    stroke-dasharray="4 3"
+                  />
+                  <circle cx="80" cy="290" r="5" fill="#4DE2FF" opacity="0.7" />
+                  <circle
+                    cx="320"
+                    cy="290"
+                    r="5"
+                    fill="#4DE2FF"
+                    opacity="0.7"
+                  />
+
+                  <!-- Fan blades -->
+                  <g transform="translate(340,270)">
+                    <circle
+                      cx="0"
+                      cy="0"
+                      r="28"
+                      fill="#0F1E36"
+                      stroke="#1D73A8"
+                      stroke-width="1.5"
+                    />
+                    <path
+                      d="M0,-20 Q10,-8 0,0 Q-10,-8 0,-20"
+                      fill="#4DE2FF"
+                      opacity="0.6"
+                    />
+                    <path
+                      d="M17,10 Q5,12 0,0 Q10,-5 17,10"
+                      fill="#4DE2FF"
+                      opacity="0.6"
+                    />
+                    <path
+                      d="M-17,10 Q-5,12 0,0 Q-10,-5 -17,10"
+                      fill="#4DE2FF"
+                      opacity="0.6"
+                    />
+                    <circle cx="0" cy="0" r="6" fill="#4DE2FF" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom wave transition -->
+      <div class="absolute bottom-0 left-0 right-0">
+        <svg
+          viewBox="0 0 1440 60"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          class="w-full h-12"
+        >
+          <path
+            d="M0,30 Q360,60 720,30 Q1080,0 1440,30 L1440,60 L0,60 Z"
+            fill="#0a1628"
+            opacity="0.5"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+     TRUST BAND
+═══════════════════════════════════════════════════ -->
+    <section id="trust" class="bg-navy py-16 border-y border-ocean/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Vision statement -->
+        <div class="reveal text-center max-w-3xl mx-auto mb-12">
+          <p class="text-ice/80 text-lg leading-relaxed italic">
+            "To be the most trusted and preferred electrical and air
+            conditioning service provider in our community — known for
+            excellence, integrity, and making power and comfort simple for
+            everyone."
+          </p>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <!-- Licensed -->
+          <div
+            class="flex flex-col sm:flex-row items-center gap-4 bg-ocean/10 border border-ocean/30 rounded-2xl p-6 hover:border-cyan/50 transition-colors duration-300"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#4DE2FF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </div>
+            <div class="text-center sm:text-left">
+              <p class="font-heading font-bold text-ice text-base">
+                Licensed Technician
+              </p>
+              <p class="text-ice/55 text-sm mt-0.5">
+                Fully qualified &amp; registered
+              </p>
+            </div>
+          </div>
+
+          <!-- ARCtick -->
+          <div
+            class="flex flex-col sm:flex-row items-center gap-4 bg-cyan/5 border border-cyan/30 rounded-2xl p-6 hover:border-cyan/60 transition-colors duration-300"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#4DE2FF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 12 11 14 15 10" />
+              </svg>
+            </div>
+            <div class="text-center sm:text-left">
+              <p class="font-heading font-bold text-ice text-base">
+                ARCtick Certified
+              </p>
+              <p class="text-ice/55 text-sm mt-0.5">
+                Refrigerant handling approved
+              </p>
+            </div>
+          </div>
+
+          <!-- Insured -->
+          <div
+            class="flex flex-col sm:flex-row items-center gap-4 bg-ocean/10 border border-ocean/30 rounded-2xl p-6 hover:border-cyan/50 transition-colors duration-300"
+          >
+            <div
+              class="w-14 h-14 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#4DE2FF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div class="text-center sm:text-left">
+              <p class="font-heading font-bold text-ice text-base">
+                Fully Insured
+              </p>
+              <p class="text-ice/55 text-sm mt-0.5">
+                Public liability &amp; insurance covered
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════════════ -->
+    <section id="services" class="bg-offwhite py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal text-center mb-14">
+          <span
+            class="text-ocean font-semibold text-sm uppercase tracking-widest"
+            >What We Do</span
+          >
+          <h2 class="font-heading font-extrabold text-4xl text-navy mt-2 mb-4">
+            Our Services
+          </h2>
+          <p class="text-navy/60 max-w-xl mx-auto leading-relaxed">
+            From installations to repairs, we handle every electrical and air
+            conditioning need with precision and care.
+          </p>
+        </div>
+
+        <!-- Two-column category headers -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <!-- Air Conditioning -->
+          <div class="reveal">
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1D73A8"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-heading font-extrabold text-2xl text-navy">
+                Air Conditioning
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- AC Cards -->
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Installation
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Split, ducted &amp; multi-split systems installed to the
+                  highest standard.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+                    />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Maintenance &amp; Cleaning
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Regular servicing to keep your system running efficiently
+                  year-round.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                    />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Repairs
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Fast diagnosis and repair of any air conditioning fault or
+                  issue.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"
+                    />
+                    <line x1="7" y1="7" x2="7.01" y2="7" />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Gas Refill
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  ARCtick-certified refrigerant recharge to restore optimal
+                  cooling.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 sm:col-span-2 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                      d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"
+                    />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Smart Thermostat Installation
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Control your climate remotely — energy savings, smart
+                  scheduling, and Wi-Fi integration.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Electrical -->
+          <div class="reveal">
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1D73A8"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+              </div>
+              <h3 class="font-heading font-extrabold text-2xl text-navy">
+                Electrical
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="6" y="2" width="12" height="20" rx="2" />
+                    <line x1="12" y1="18" x2="12.01" y2="18" />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Power Points &amp; Switches
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Installation and replacement of power points, GPOs, and light
+                  switches.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="2" />
+                    <line x1="8" y1="6" x2="8" y2="18" />
+                    <line x1="12" y1="6" x2="12" y2="18" />
+                    <line x1="16" y1="6" x2="16" y2="18" />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Switchboard Upgrades
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Upgrade outdated boards to modern safety switches and circuit
+                  breakers.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="5" />
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  LED Lighting
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Energy-efficient LED downlight installation and retrofitting
+                  services.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M8 8c0-2.2 1.8-4 4-4s4 1.8 4 4" />
+                    <line x1="12" y1="12" x2="12" y2="22" />
+                    <line x1="8" y1="19" x2="16" y2="19" />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Ceiling Fans
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Safe installation of ceiling fans with full wiring and speed
+                  control.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Circuit Repairs
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Diagnosis and repair of tripping circuits, faults, and power
+                  outages.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                    <path d="M16 7V5a2 2 0 0 0-4 0v2" />
+                    <line x1="12" y1="12" x2="12" y2="16" />
+                    <circle cx="12" cy="17" r="1" />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  EV Charger Installation
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Dedicated EV charging points installed safely at home or
+                  commercial premises.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+
+              <div
+                class="service-card bg-white border border-gray-100 rounded-2xl p-5 sm:col-span-2 cursor-pointer"
+                tabindex="0"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center mb-3"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1D73A8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M9 11l3 3L22 4" />
+                    <path
+                      d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                    />
+                  </svg>
+                </div>
+                <h4 class="font-heading font-bold text-navy text-base mb-1">
+                  Electrical Inspections
+                </h4>
+                <p class="text-navy/60 text-sm leading-relaxed mb-3">
+                  Comprehensive safety inspections and compliance reports for
+                  homes and businesses.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request Quote →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+     WHY CHOOSE US
+═══════════════════════════════════════════════════ -->
+    <section id="why-us" class="bg-navy py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal">
+            <span
+              class="text-cyan font-semibold text-sm uppercase tracking-widest"
+              >Why Zap&amp;flow</span
+            >
+            <h2 class="font-heading font-extrabold text-4xl text-ice mt-2 mb-6">
+              The Zap&amp;flow Difference
+            </h2>
+            <p class="text-ice/65 leading-relaxed mb-10">
+              We believe that reliable power and comfortable air are the
+              foundations of a happy home and a successful business. Every
+              connection we make and every system we install is done with care —
+              because we know how much it matters to you. We bring energy,
+              speed, and enthusiasm to every job, big or small, and we never cut
+              corners.
+            </p>
+
+            <ul class="space-y-5" role="list">
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-7 h-7 rounded-full bg-cyan/15 border border-cyan/40 flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4DE2FF"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-heading font-bold text-ice">
+                    Honest and transparent service
+                  </p>
+                  <p class="text-ice/55 text-sm mt-0.5">
+                    No hidden fees. You'll always know what you're paying for,
+                    before we start.
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-7 h-7 rounded-full bg-cyan/15 border border-cyan/40 flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4DE2FF"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-heading font-bold text-ice">
+                    High-standard workmanship
+                  </p>
+                  <p class="text-ice/55 text-sm mt-0.5">
+                    Every job meets Australian standards — we don't cut corners,
+                    ever.
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-7 h-7 rounded-full bg-cyan/15 border border-cyan/40 flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4DE2FF"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-heading font-bold text-ice">
+                    Fast response times
+                  </p>
+                  <p class="text-ice/55 text-sm mt-0.5">
+                    We show up when we say we will — prompt, reliable, and ready
+                    to work.
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-7 h-7 rounded-full bg-cyan/15 border border-cyan/40 flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4DE2FF"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-heading font-bold text-ice">
+                    Respect for your home and business
+                  </p>
+                  <p class="text-ice/55 text-sm mt-0.5">
+                    We treat every space like our own — clean, careful, and
+                    considerate.
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-7 h-7 rounded-full bg-cyan/15 border border-cyan/40 flex items-center justify-center flex-shrink-0 mt-0.5"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4DE2FF"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-heading font-bold text-ice">
+                    Long-term reliability
+                  </p>
+                  <p class="text-ice/55 text-sm mt-0.5">
+                    Built to last. We stand behind our work so you can count on
+                    us for years.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Visual panel -->
+          <div class="reveal">
+            <div class="relative">
+              <div
+                class="absolute inset-0 bg-ocean/20 rounded-3xl blur-2xl"
+              ></div>
+              <div
+                class="relative bg-ocean/10 border border-ocean/30 rounded-3xl p-8 space-y-5"
+              >
+                <!-- Metric cards -->
+                <div class="grid grid-cols-2 gap-4">
+                  <div
+                    class="bg-navy/70 border border-cyan/20 rounded-2xl p-5 text-center"
+                  >
+                    <p class="font-heading font-extrabold text-4xl text-cyan">
+                      500+
+                    </p>
+                    <p class="text-ice/60 text-sm mt-1">Satisfied Clients</p>
+                  </div>
+                  <div
+                    class="bg-navy/70 border border-cyan/20 rounded-2xl p-5 text-center"
+                  >
+                    <p class="font-heading font-extrabold text-4xl text-cyan">
+                      10+
+                    </p>
+                    <p class="text-ice/60 text-sm mt-1">Years Experience</p>
+                  </div>
+                </div>
+                <div
+                  class="bg-navy/70 border border-cyan/20 rounded-2xl p-5 text-center"
+                >
+                  <div
+                    class="flex justify-center gap-1 mb-2"
+                    aria-label="5 star rating"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                  </div>
+                  <p class="font-heading font-extrabold text-3xl text-cyan">
+                    5.0
+                  </p>
+                  <p class="text-ice/60 text-sm mt-1">Average Google Rating</p>
+                </div>
+                <div
+                  class="bg-navy/70 border border-ocean/30 rounded-2xl p-4 flex items-center gap-3"
+                >
+                  <div
+                    class="w-10 h-10 rounded-full bg-cyan/20 flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#4DE2FF"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4 19.79 19.79 0 0 1 1.61 4.77 2 2 0 0 1 3.6 2.6h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.2a16 16 0 0 0 5.89 5.89l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.35 17.5z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-ice/80 text-sm font-medium">
+                      Same-day service available
+                    </p>
+                    <p class="text-cyan text-xs">Call us for urgent jobs</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+     SERVICE AREAS + TESTIMONIALS
+═══════════════════════════════════════════════════ -->
+    <section id="areas" class="bg-offwhite py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <!-- Service Areas -->
+          <div class="reveal">
+            <span
+              class="text-ocean font-semibold text-sm uppercase tracking-widest"
+              >Where We Work</span
+            >
+            <h2
+              class="font-heading font-extrabold text-4xl text-navy mt-2 mb-4"
+            >
+              Serving Your Community
+            </h2>
+            <p class="text-navy/60 leading-relaxed mb-8">
+              We proudly service homes and businesses across the local area. If
+              you don't see your suburb below, give us a call — chances are we
+              cover it.
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <!-- Suburb tiles -->
+              <div
+                class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-ocean/40 transition-colors cursor-default"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="#4DE2FF"
+                  class="pin-bounce flex-shrink-0"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span class="text-navy/75 text-sm font-medium">Parramatta</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-ocean/40 transition-colors cursor-default"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="#4DE2FF"
+                  class="pin-bounce flex-shrink-0"
+                  aria-hidden="true"
+                  style="animation-delay: 0.2s"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span class="text-navy/75 text-sm font-medium">Blacktown</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-ocean/40 transition-colors cursor-default"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="#4DE2FF"
+                  class="pin-bounce flex-shrink-0"
+                  aria-hidden="true"
+                  style="animation-delay: 0.4s"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span class="text-navy/75 text-sm font-medium">Penrith</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-ocean/40 transition-colors cursor-default"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="#4DE2FF"
+                  class="pin-bounce flex-shrink-0"
+                  aria-hidden="true"
+                  style="animation-delay: 0.1s"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span class="text-navy/75 text-sm font-medium">Liverpool</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-ocean/40 transition-colors cursor-default"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="#4DE2FF"
+                  class="pin-bounce flex-shrink-0"
+                  aria-hidden="true"
+                  style="animation-delay: 0.3s"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span class="text-navy/75 text-sm font-medium"
+                  >Campbelltown</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-ocean/40 transition-colors cursor-default"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="#4DE2FF"
+                  class="pin-bounce flex-shrink-0"
+                  aria-hidden="true"
+                  style="animation-delay: 0.5s"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span class="text-navy/75 text-sm font-medium"
+                  >Castle Hill</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-ocean/40 transition-colors cursor-default"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="#4DE2FF"
+                  class="pin-bounce flex-shrink-0"
+                  aria-hidden="true"
+                  style="animation-delay: 0.15s"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span class="text-navy/75 text-sm font-medium">Fairfield</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-ocean/40 transition-colors cursor-default"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="#4DE2FF"
+                  class="pin-bounce flex-shrink-0"
+                  aria-hidden="true"
+                  style="animation-delay: 0.35s"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span class="text-navy/75 text-sm font-medium">Merrylands</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-ocean/40 transition-colors cursor-default"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="#4DE2FF"
+                  class="pin-bounce flex-shrink-0"
+                  aria-hidden="true"
+                  style="animation-delay: 0.45s"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span class="text-navy/75 text-sm font-medium">Auburn</span>
+              </div>
+            </div>
+
+            <p
+              class="text-ocean font-semibold text-sm mt-6 cursor-pointer hover:text-cyan transition-colors"
+            >
+              + Many more suburbs covered. Contact us to check →
+            </p>
+          </div>
+
+          <!-- Testimonials -->
+          <div class="reveal">
+            <span
+              class="text-ocean font-semibold text-sm uppercase tracking-widest"
+              >What Clients Say</span
+            >
+            <h2
+              class="font-heading font-extrabold text-4xl text-navy mt-2 mb-8"
+            >
+              Real Reviews
+            </h2>
+
+            <div class="relative overflow-hidden" id="carousel-container">
+              <div class="carousel-track" id="carousel-track">
+                <!-- Card 1 -->
+                <div
+                  class="min-w-full bg-white border border-gray-100 rounded-2xl p-7 shadow-sm"
+                >
+                  <div class="flex gap-1 mb-4" aria-label="5 stars">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                  </div>
+                  <p class="text-navy/75 leading-relaxed mb-5 text-base italic">
+                    "Absolutely fantastic service. They installed our ducted AC
+                    system quickly and cleanly. The team was professional, on
+                    time, and the price was exactly what was quoted. Couldn't be
+                    happier!"
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-10 h-10 rounded-full bg-ocean/20 flex items-center justify-center font-heading font-bold text-ocean text-sm"
+                      aria-hidden="true"
+                    >
+                      SL
+                    </div>
+                    <div>
+                      <p class="font-heading font-bold text-navy text-sm">
+                        Sarah L.
+                      </p>
+                      <p class="text-navy/50 text-xs">Homeowner, Parramatta</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                  class="min-w-full bg-white border border-gray-100 rounded-2xl p-7 shadow-sm"
+                >
+                  <div class="flex gap-1 mb-4" aria-label="5 stars">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                  </div>
+                  <p class="text-navy/75 leading-relaxed mb-5 text-base italic">
+                    "Used Zap&amp;flow for a full switchboard upgrade. They
+                    explained everything clearly, worked neatly, and the job was
+                    done the same day. Highly recommend for anyone needing an
+                    electrician."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-10 h-10 rounded-full bg-ocean/20 flex items-center justify-center font-heading font-bold text-ocean text-sm"
+                      aria-hidden="true"
+                    >
+                      MT
+                    </div>
+                    <div>
+                      <p class="font-heading font-bold text-navy text-sm">
+                        Marcus T.
+                      </p>
+                      <p class="text-navy/50 text-xs">
+                        Business Owner, Blacktown
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                  class="min-w-full bg-white border border-gray-100 rounded-2xl p-7 shadow-sm"
+                >
+                  <div class="flex gap-1 mb-4" aria-label="5 stars">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DE2FF"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                  </div>
+                  <p class="text-navy/75 leading-relaxed mb-5 text-base italic">
+                    "Our AC was not cooling properly for weeks. Zap&amp;flow
+                    came out next day, diagnosed the issue, topped up the gas,
+                    and it's been perfect ever since. Fair price and very
+                    friendly team."
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-10 h-10 rounded-full bg-ocean/20 flex items-center justify-center font-heading font-bold text-ocean text-sm"
+                      aria-hidden="true"
+                    >
+                      JR
+                    </div>
+                    <div>
+                      <p class="font-heading font-bold text-navy text-sm">
+                        Jessica R.
+                      </p>
+                      <p class="text-navy/50 text-xs">Homeowner, Penrith</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dots -->
+              <div
+                class="flex justify-center gap-2 mt-6"
+                id="carousel-dots"
+                role="tablist"
+                aria-label="Testimonial navigation"
+              >
+                <button
+                  class="w-2.5 h-2.5 rounded-full bg-ocean transition-all duration-300 dot-btn active"
+                  data-index="0"
+                  aria-label="Review 1"
+                  role="tab"
+                  aria-selected="true"
+                ></button>
+                <button
+                  class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 dot-btn"
+                  data-index="1"
+                  aria-label="Review 2"
+                  role="tab"
+                  aria-selected="false"
+                ></button>
+                <button
+                  class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 dot-btn"
+                  data-index="2"
+                  aria-label="Review 3"
+                  role="tab"
+                  aria-selected="false"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════════════ -->
+    <section
+      id="quote"
+      class="py-24 relative overflow-hidden"
+      style="background: linear-gradient(135deg, #0f1e36 0%, #1d73a8 100%)"
+    >
+      <!-- Decorative circles -->
+      <div
+        class="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10"
+        style="
+          background: radial-gradient(circle, #4de2ff, transparent);
+          transform: translate(30%, -30%);
+        "
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-10"
+        style="
+          background: radial-gradient(circle, #4de2ff, transparent);
+          transform: translate(-30%, 30%);
+        "
+      ></div>
+
+      <div
+        class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal"
+      >
+        <span
+          class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-ice text-xs font-semibold rounded-full px-4 py-1.5 mb-6 tracking-wide uppercase"
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="#4DE2FF"
+            aria-hidden="true"
+          >
+            <circle cx="6" cy="6" r="6" />
+          </svg>
+          Free, No-Obligation Quote
+        </span>
+
+        <h2
+          class="font-heading font-extrabold text-4xl sm:text-5xl text-ice mb-4 leading-tight"
+        >
+          Ready for reliable power and perfect air?
+        </h2>
+
+        <p class="text-ice/75 text-lg leading-relaxed mb-10">
+          Get your free quote today and experience the Zap&amp;flow difference.
+        </p>
+
+        <!-- Quote form -->
+        <form
+          class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 sm:p-8 text-left space-y-4"
+          aria-label="Free quote request form"
+          novalidate
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                for="name"
+                class="block text-ice/80 text-sm font-medium mb-1.5"
+                >Full Name</label
+              >
+              <input
+                id="name"
+                type="text"
+                name="name"
+                autocomplete="name"
+                placeholder="Your name"
+                class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-ice placeholder-ice/40 text-sm focus:outline-none focus:border-cyan transition-colors"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="phone"
+                class="block text-ice/80 text-sm font-medium mb-1.5"
+                >Phone Number</label
+              >
+              <input
+                id="phone"
+                type="tel"
+                name="phone"
+                autocomplete="tel"
+                placeholder="04xx xxx xxx"
+                class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-ice placeholder-ice/40 text-sm focus:outline-none focus:border-cyan transition-colors"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              for="suburb"
+              class="block text-ice/80 text-sm font-medium mb-1.5"
+              >Your Suburb</label
+            >
+            <input
+              id="suburb"
+              type="text"
+              name="suburb"
+              autocomplete="address-level2"
+              placeholder="e.g. Parramatta"
+              class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-ice placeholder-ice/40 text-sm focus:outline-none focus:border-cyan transition-colors"
+            />
+          </div>
+          <div>
+            <label
+              for="service"
+              class="block text-ice/80 text-sm font-medium mb-1.5"
+              >Service Needed</label
+            >
+            <select
+              id="service"
+              name="service"
+              class="w-full bg-navy border border-white/20 rounded-xl px-4 py-3 text-ice/80 text-sm focus:outline-none focus:border-cyan transition-colors cursor-pointer appearance-none"
+            >
+              <option value="" disabled selected>Select a service...</option>
+              <optgroup label="Air Conditioning">
+                <option>AC Installation</option>
+                <option>AC Maintenance &amp; Cleaning</option>
+                <option>AC Repairs</option>
+                <option>Gas Refill</option>
+                <option>Smart Thermostat Installation</option>
+              </optgroup>
+              <optgroup label="Electrical">
+                <option>Power Points &amp; Switches</option>
+                <option>Switchboard Upgrade</option>
+                <option>LED Lighting</option>
+                <option>Ceiling Fan Installation</option>
+                <option>Circuit Repairs</option>
+                <option>EV Charger Installation</option>
+                <option>Electrical Inspection</option>
+              </optgroup>
+            </select>
+          </div>
+          <div>
+            <label
+              for="message"
+              class="block text-ice/80 text-sm font-medium mb-1.5"
+              >Brief Description
+              <span class="text-ice/40 font-normal">(optional)</span></label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              placeholder="Tell us a bit about the job..."
+              class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-ice placeholder-ice/40 text-sm focus:outline-none focus:border-cyan transition-colors resize-none"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn-cyan w-full rounded-xl py-4 text-base cursor-pointer font-heading font-bold"
+          >
+            Get Your Free Quote
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+    <footer id="contact" class="bg-navy border-t border-ocean/20 pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"
+        >
+          <!-- Brand -->
+          <div class="sm:col-span-2 lg:col-span-1">
+            <a
+              href="#"
+              class="flex items-center gap-2 mb-4 cursor-pointer"
+              aria-label="Zap&flow home"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 32 32"
+                fill="none"
+                aria-hidden="true"
+              >
+                <polygon
+                  points="18,2 8,18 16,18 14,30 24,14 16,14"
+                  fill="#4DE2FF"
+                />
+              </svg>
+              <span class="font-heading font-extrabold text-lg text-ice"
+                >Zap<span class="text-cyan">&amp;</span>flow</span
+              >
+            </a>
+            <p class="text-ice/55 text-sm leading-relaxed mb-5 max-w-xs">
+              Making power and comfort simple for everyone. Reliable electrical
+              &amp; air conditioning services for homes and businesses.
+            </p>
+            <!-- Social icons -->
+            <div class="flex gap-3">
+              <a
+                href="#"
+                class="w-9 h-9 rounded-xl bg-ocean/20 border border-ocean/30 flex items-center justify-center hover:bg-cyan/20 hover:border-cyan/50 transition-colors cursor-pointer"
+                aria-label="Facebook"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="#E2FAFF"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-xl bg-ocean/20 border border-ocean/30 flex items-center justify-center hover:bg-cyan/20 hover:border-cyan/50 transition-colors cursor-pointer"
+                aria-label="Instagram"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#E2FAFF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-xl bg-ocean/20 border border-ocean/30 flex items-center justify-center hover:bg-cyan/20 hover:border-cyan/50 transition-colors cursor-pointer"
+                aria-label="Google Business"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="#E2FAFF"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M21.35 11.1H12.18V13.83H18.69C18.36 17.64 15.19 19.27 12.19 19.27C8.36 19.27 5 16.25 5 12C5 7.9 8.2 4.73 12.2 4.73C15.29 4.73 17.1 6.7 17.1 6.7L19 4.72C19 4.72 16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12C2.03 17.05 6.16 22 12.25 22C17.6 22 21.5 18.33 21.5 12.91C21.5 11.76 21.35 11.1 21.35 11.1Z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div>
+            <h4
+              class="font-heading font-bold text-ice text-sm mb-5 uppercase tracking-wider"
+            >
+              Services
+            </h4>
+            <ul class="space-y-2.5 text-sm">
+              <li>
+                <a
+                  href="#services"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >AC Installation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >AC Maintenance</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >AC Repairs &amp; Gas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >Switchboard Upgrades</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >LED Lighting</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >EV Charger Install</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >Electrical Inspections</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div>
+            <h4
+              class="font-heading font-bold text-ice text-sm mb-5 uppercase tracking-wider"
+            >
+              Company
+            </h4>
+            <ul class="space-y-2.5 text-sm">
+              <li>
+                <a
+                  href="#why-us"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#areas"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >Service Areas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#quote"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >Free Quote</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#trust"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >Certifications</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact & Hours -->
+          <div>
+            <h4
+              class="font-heading font-bold text-ice text-sm mb-5 uppercase tracking-wider"
+            >
+              Contact
+            </h4>
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-start gap-2.5">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#4DE2FF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mt-0.5 flex-shrink-0"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4 19.79 19.79 0 0 1 1.61 4.77 2 2 0 0 1 3.6 2.6h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.2a16 16 0 0 0 5.89 5.89l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.35 17.5z"
+                  />
+                </svg>
+                <a
+                  href="tel:+61400000000"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >0400 000 000</a
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#4DE2FF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mt-0.5 flex-shrink-0"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <a
+                  href="mailto:info@zapandflow.com.au"
+                  class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
+                  >info@zapandflow.com.au</a
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#4DE2FF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mt-0.5 flex-shrink-0"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <div class="text-ice/55">
+                  <p>Mon–Fri: 7am – 6pm</p>
+                  <p>Sat: 8am – 4pm</p>
+                  <p>Sun: Emergency only</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Divider + Legal -->
+        <div
+          class="border-t border-ocean/20 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <p class="text-ice/35 text-xs">
+            &copy; 2026 Zap&amp;flow Electrical &amp; Air Conditioning. All
+            rights reserved. ABN: XX XXX XXX XXX
+          </p>
+          <p class="text-ice/35 text-xs">
+            Licensed Electrical Contractor · ARCtick Licence No. XXXXXX · Fully
+            Insured
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════ -->
+    <script>
+      // ── Nav scroll ───────────────────────────────────────
+      const navbar = document.getElementById("navbar");
+      window.addEventListener(
+        "scroll",
+        () => {
+          navbar.classList.toggle("scrolled", window.scrollY > 40);
+        },
+        { passive: true },
+      );
+
+      // ── Hamburger ────────────────────────────────────────
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobile-menu");
+      hamburger.addEventListener("click", () => {
+        const open = hamburger.classList.toggle("open");
+        mobileMenu.classList.toggle("hidden", !open);
+        hamburger.setAttribute("aria-expanded", open);
+        navbar.classList.add("scrolled"); // Ensure navbar has background when menu is open
+      });
+      document.querySelectorAll(".mobile-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("open");
+          mobileMenu.classList.add("hidden");
+          hamburger.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // ── Scroll reveal ─────────────────────────────────────
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => revealObserver.observe(el));
+
+      // ── Testimonial carousel ──────────────────────────────
+      const track = document.getElementById("carousel-track");
+      const dots = document.querySelectorAll(".dot-btn");
+      let current = 0;
+      let autoTimer;
+
+      function goTo(index) {
+        current = index;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((d, i) => {
+          d.classList.toggle("bg-ocean", i === index);
+          d.classList.toggle("bg-gray-300", i !== index);
+          d.setAttribute("aria-selected", i === index ? "true" : "false");
+        });
+      }
+
+      function startAuto() {
+        autoTimer = setInterval(() => goTo((current + 1) % 3), 4500);
+      }
+      function stopAuto() {
+        clearInterval(autoTimer);
+      }
+
+      dots.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          stopAuto();
+          goTo(parseInt(btn.dataset.index));
+          startAuto();
+        });
+      });
+
+      startAuto();
+
+      // Pause on hover
+      const carouselContainer = document.getElementById("carousel-container");
+      carouselContainer.addEventListener("mouseenter", stopAuto);
+      carouselContainer.addEventListener("mouseleave", startAuto);
+    </script>
+  </body>
+</html>
