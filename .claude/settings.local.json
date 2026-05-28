@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python \"C:/Users/lilo3/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"animation scroll-reveal fade accessibility\" --domain ux)",
+      "Bash(python \"C:/Users/lilo3/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"layout responsive hero cta\" --stack html-tailwind)"
+    ]
+  }
+}
