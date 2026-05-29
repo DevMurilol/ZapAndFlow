@@ -12,6 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <script>
       tailwind.config = {
         theme: {
@@ -367,34 +369,7 @@
             </div>
 
             <!-- Stats -->
-            <div class="mt-12 flex gap-8">
-              <div>
-                <p
-                  class="font-heading font-extrabold text-3xl text-cyan stat-num"
-                >
-                  500+
-                </p>
-                <p class="text-ice/60 text-sm mt-1">Jobs Completed</p>
-              </div>
-              <div class="w-px bg-ocean/40"></div>
-              <div>
-                <p
-                  class="font-heading font-extrabold text-3xl text-cyan stat-num"
-                >
-                  5★
-                </p>
-                <p class="text-ice/60 text-sm mt-1">Average Rating</p>
-              </div>
-              <div class="w-px bg-ocean/40"></div>
-              <div>
-                <p
-                  class="font-heading font-extrabold text-3xl text-cyan stat-num"
-                >
-                  10+
-                </p>
-                <p class="text-ice/60 text-sm mt-1">Years Experience</p>
-              </div>
-            </div>
+            <div class="mt-12 flex gap-8"></div>
           </div>
 
           <!-- Visual Column -->
@@ -598,7 +573,7 @@
         </div>
 
         <!-- Trust badges -->
-        <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="reveal grid grid-cols-1 sm:grid-cols-2 gap-6">
           <!-- Licensed -->
           <div
             class="flex flex-col sm:flex-row items-center gap-4 bg-ocean/10 border border-ocean/30 rounded-2xl p-6 hover:border-cyan/50 transition-colors duration-300"
@@ -617,7 +592,7 @@
                 stroke-linejoin="round"
                 aria-hidden="true"
               >
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <rect x="2" y="11" width="18" height="11" rx="2" ry="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
             </div>
@@ -627,38 +602,6 @@
               </p>
               <p class="text-ice/55 text-sm mt-0.5">
                 Fully qualified &amp; registered
-              </p>
-            </div>
-          </div>
-
-          <!-- ARCtick -->
-          <div
-            class="flex flex-col sm:flex-row items-center gap-4 bg-cyan/5 border border-cyan/30 rounded-2xl p-6 hover:border-cyan/60 transition-colors duration-300"
-          >
-            <div
-              class="w-14 h-14 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center flex-shrink-0"
-            >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#4DE2FF"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <polyline points="9 12 11 14 15 10" />
-              </svg>
-            </div>
-            <div class="text-center sm:text-left">
-              <p class="font-heading font-bold text-ice text-base">
-                ARCtick Certified
-              </p>
-              <p class="text-ice/55 text-sm mt-0.5">
-                Refrigerant handling approved
               </p>
             </div>
           </div>
@@ -1231,6 +1174,119 @@
             </div>
           </div>
         </div>
+
+        <!-- ── Featured Service Showcases ───────────────────── -->
+        <div class="mt-16 pt-12 border-t border-gray-200">
+          <div class="reveal text-center mb-10">
+            <span
+              class="text-ocean font-semibold text-sm uppercase tracking-widest"
+              >See Our Work</span
+            >
+            <h3 class="font-heading font-extrabold text-3xl text-navy mt-2">
+              Trusted in Every Job We Do
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Electrical Service Image Card -->
+            <div
+              class="reveal bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm service-card"
+            >
+              <div class="overflow-hidden h-150 sm:h-180">
+                <img
+                  src="./assets/img/service_01.png"
+                  alt="Licensed electrician performing wiring installation at a residential property"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#1D73A8"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <polygon
+                        points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="font-heading font-extrabold text-xl text-navy">
+                    Electrical Services
+                  </h3>
+                </div>
+                <p class="text-navy/60 text-sm leading-relaxed mb-4">
+                  From power points to full switchboard upgrades, our licensed
+                  electricians deliver safe, high-standard workmanship for homes
+                  and businesses across Western Sydney.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request a Quote →</a
+                >
+              </div>
+            </div>
+
+            <!-- Air Conditioning Service Image Card -->
+            <div
+              class="reveal bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm service-card"
+            >
+              <div class="overflow-hidden h-150 sm:h-180">
+                <img
+                  src="./assets/img/service_02.png"
+                  alt="Technician installing and maintaining a residential air conditioning unit"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center flex-shrink-0"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#1D73A8"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="font-heading font-extrabold text-xl text-navy">
+                    Air Conditioning Services
+                  </h3>
+                </div>
+                <p class="text-navy/60 text-sm leading-relaxed mb-4">
+                  Keep your home or business cool and comfortable year-round. We
+                  specialise in installation, maintenance, repairs, and gas
+                  refills — ARCtick-certified and ready for any system.
+                </p>
+                <a
+                  href="#quote"
+                  class="text-ocean font-semibold text-sm hover:text-cyan transition-colors cursor-pointer"
+                  >Request a Quote →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1416,7 +1472,7 @@
                     class="bg-navy/70 border border-cyan/20 rounded-2xl p-5 text-center"
                   >
                     <p class="font-heading font-extrabold text-4xl text-cyan">
-                      500+
+                      200+
                     </p>
                     <p class="text-ice/60 text-sm mt-1">Satisfied Clients</p>
                   </div>
@@ -1428,74 +1484,6 @@
                     </p>
                     <p class="text-ice/60 text-sm mt-1">Years Experience</p>
                   </div>
-                </div>
-                <div
-                  class="bg-navy/70 border border-cyan/20 rounded-2xl p-5 text-center"
-                >
-                  <div
-                    class="flex justify-center gap-1 mb-2"
-                    aria-label="5 star rating"
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                  </div>
-                  <p class="font-heading font-extrabold text-3xl text-cyan">
-                    5.0
-                  </p>
-                  <p class="text-ice/60 text-sm mt-1">Average Google Rating</p>
                 </div>
                 <div
                   class="bg-navy/70 border border-ocean/30 rounded-2xl p-4 flex items-center gap-3"
@@ -1808,10 +1796,7 @@
                     </svg>
                   </div>
                   <p class="text-navy/75 leading-relaxed mb-5 text-base italic">
-                    "Absolutely fantastic service. They installed our ducted AC
-                    system quickly and cleanly. The team was professional, on
-                    time, and the price was exactly what was quoted. Couldn't be
-                    happier!"
+                    "Excellent service from start to finish. Friendly, professional, and very helpful throughout the whole process. Communication was great, everything was done efficiently, and the quality exceeded expectations. Highly recommend and would definitely use their services again!"
                   </p>
                   <div class="flex items-center gap-3">
                     <div
@@ -1822,9 +1807,9 @@
                     </div>
                     <div>
                       <p class="font-heading font-bold text-navy text-sm">
-                        Sarah L.
+                        Daniela Dunche
                       </p>
-                      <p class="text-navy/50 text-xs">Homeowner, Parramatta</p>
+                      <p class="text-navy/50 text-xs">Homeowner, Melbourne</p>
                     </div>
                   </div>
                 </div>
@@ -1891,10 +1876,7 @@
                     </svg>
                   </div>
                   <p class="text-navy/75 leading-relaxed mb-5 text-base italic">
-                    "Used Zap&amp;flow for a full switchboard upgrade. They
-                    explained everything clearly, worked neatly, and the job was
-                    done the same day. Highly recommend for anyone needing an
-                    electrician."
+                    "Very reliable, Quality of work , delivered on time by professionals."
                   </p>
                   <div class="flex items-center gap-3">
                     <div
@@ -1905,94 +1887,11 @@
                     </div>
                     <div>
                       <p class="font-heading font-bold text-navy text-sm">
-                        Marcus T.
+                        Neel Singh
                       </p>
                       <p class="text-navy/50 text-xs">
-                        Business Owner, Blacktown
+                        Client
                       </p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div
-                  class="min-w-full bg-white border border-gray-100 rounded-2xl p-7 shadow-sm"
-                >
-                  <div class="flex gap-1 mb-4" aria-label="5 stars">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#4DE2FF"
-                      aria-hidden="true"
-                    >
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                      />
-                    </svg>
-                  </div>
-                  <p class="text-navy/75 leading-relaxed mb-5 text-base italic">
-                    "Our AC was not cooling properly for weeks. Zap&amp;flow
-                    came out next day, diagnosed the issue, topped up the gas,
-                    and it's been perfect ever since. Fair price and very
-                    friendly team."
-                  </p>
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="w-10 h-10 rounded-full bg-ocean/20 flex items-center justify-center font-heading font-bold text-ocean text-sm"
-                      aria-hidden="true"
-                    >
-                      JR
-                    </div>
-                    <div>
-                      <p class="font-heading font-bold text-navy text-sm">
-                        Jessica R.
-                      </p>
-                      <p class="text-navy/50 text-xs">Homeowner, Penrith</p>
                     </div>
                   </div>
                 </div>
@@ -2016,13 +1915,6 @@
                   class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 dot-btn"
                   data-index="1"
                   aria-label="Review 2"
-                  role="tab"
-                  aria-selected="false"
-                ></button>
-                <button
-                  class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 dot-btn"
-                  data-index="2"
-                  aria-label="Review 3"
                   role="tab"
                   aria-selected="false"
                 ></button>
@@ -2198,32 +2090,39 @@
     <!-- ═══════════════════════════════════════════════════
      FOOTER
 ═══════════════════════════════════════════════════ -->
-    <footer id="contact" class="bg-navy border-t border-ocean/20 pt-16 pb-8">
+    <footer id="contact" class="bg-navy border-t border-ocean/20 ml-3 pt-16 pb-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+          <a
+          href="#"
+          class="flex items-center  mb-1 cursor-pointer"
+          aria-label="Zap&flow home"
+        >
+          <lottie-player
+            src="./assets/ZapAndFlow.json"
+            background="transparent"
+            speed="1"
+            loop
+            style="width: 180px; height: 180px;display: flex ;justify-content: flex-start;"
+            autoplay
+          >
+          </lottie-player>
+        </a>
+        <p class="text-ice/55 text-sm leading-relaxed max-w-xs">
+          Making power and comfort simple for everyone. Reliable electrical
+          &amp; air conditioning services for homes and businesses.
+        </p>
+        </div>
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"
         >
           <!-- Brand -->
           <div class="sm:col-span-2 lg:col-span-1">
-            <a
-              href="#"
-              class="flex items-center gap-2 mb-4 cursor-pointer"
-              aria-label="Zap&flow home"
-            >
-              <img
-                class="h-16 w-auto"
-                src="./assets/img/logo.png"
-                alt="zap and flow logo"
-              />
-            </a>
-            <p class="text-ice/55 text-sm leading-relaxed mb-5 max-w-xs">
-              Making power and comfort simple for everyone. Reliable electrical
-              &amp; air conditioning services for homes and businesses.
-            </p>
+            
             <!-- Social icons -->
             <div class="flex gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61590149908471"
                 class="w-9 h-9 rounded-xl bg-ocean/20 border border-ocean/30 flex items-center justify-center hover:bg-cyan/20 hover:border-cyan/50 transition-colors cursor-pointer"
                 aria-label="Facebook"
               >
@@ -2407,7 +2306,7 @@
                 <a
                   href="tel:+61400000000"
                   class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
-                  >0400 000 000</a
+                  >0451 016 672</a
                 >
               </li>
               <li class="flex items-start gap-2.5">
@@ -2429,9 +2328,9 @@
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
                 <a
-                  href="mailto:info@zapandflow.com.au"
+                  href="mailto:info@zapflow.com.au"
                   class="text-ice/55 hover:text-cyan transition-colors cursor-pointer"
-                  >info@zapandflow.com.au</a
+                  >info@zapflow.com.au</a
                 >
               </li>
               <li class="flex items-start gap-2.5">
@@ -2466,11 +2365,19 @@
         >
           <p class="text-ice/35 text-xs">
             &copy; 2026 Zap&amp;flow Electrical &amp; Air Conditioning. All
-            rights reserved. ABN: XX XXX XXX XXX
-          </p>
-          <p class="text-ice/35 text-xs">
-            Licensed Electrical Contractor · ARCtick Licence No. XXXXXX · Fully
+            rights reserved. ABN: 19 742 984 712
+          
+          <a
+            href="https://ancoratechsolutions.com"
+            class="text-ice/35 text-xs hover:text-cyan transition-colors cursor-pointer"
+            > Powered by Ancora Tech Solutions</a  
+           class="text-ice/35 text-xs">
+
+           <p class="text-ice/35 text-xs">
+            Licensed Electrical Contractor · Fully
             Insured
+           </p>
+            
           </p>
         </div>
       </div>
